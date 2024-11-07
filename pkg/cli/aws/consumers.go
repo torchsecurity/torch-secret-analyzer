@@ -72,7 +72,7 @@ var listPotentialCommand = &cobra.Command{
 	Short: "List AWS secret's potential consumers",
 	Long:  "Torch analyzes and correlates data across AWS IAM and AWS Secrets Manager to identify users and services with permission to access a certain secret",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(colors.Yellow("Comming soon!"))
+		fmt.Println(colors.Yellow("Coming soon!"))
 	},
 }
 
@@ -82,7 +82,7 @@ func init() {
 	consumersCommand.PersistentFlags().StringVarP(&region, "region", "r", "", "AWS region of the secret (will use aws profile by default).")
 	consumersCommand.PersistentFlags().StringVarP(&profileToUse, "profile", "p", "", "The AWS profile the CLI tool should use (will use the active aws profile by default).")
 
-	listActualCommand.Flags().IntVarP(&daysBack, "days-back", "d", 14, "The ammount of days back to query AWS cloudtrail for its events (14 by default).")
+	listActualCommand.Flags().IntVarP(&daysBack, "days-back", "d", 14, "The amount of days back to query AWS cloudtrail for its events (14 by default).")
 
 	consumersCommand.AddCommand(listActualCommand)
 	consumersCommand.AddCommand(listPotentialCommand)
