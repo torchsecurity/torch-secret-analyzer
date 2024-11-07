@@ -1,0 +1,32 @@
+version: 2
+
+project_name: torch
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - binary: torch
+    main: ./cmd/torch/main.go
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+# Homebrew tap configuration
+brews:
+  - repository:
+      owner: torchsecurity
+      name: homebrew-torch
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    description: "Keep your secrets safe"
+    name: "torch"
+    homepage: "https://github.com/torchsecurity/torch-secret-analyzer"
+    install: |
+      bin.install "torch"
+    test: |
+      system "#{bin}/torch --version"
