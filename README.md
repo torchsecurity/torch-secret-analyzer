@@ -52,7 +52,7 @@ Torch Secrets Analyzer uses your local AWS profile to access AWS Secrets Manager
 To check the AWS profile under which the tool runs, run the command:
 
 ```bash
-torch aws config print
+torch aws auth print
 ```
 
 ### Configure a new AWS profile (or an existing one)
@@ -62,13 +62,13 @@ Torch Secrets Analyzer supports using both credential and SSO profiles.
 Configure a credential profile:
 
 ```bash
-torch aws config [--profile]
+torch aws auth config [--profile]
 ```
 
 Configure an SSO profile:
 
 ```bash
-torch aws config sso [--profile]
+torch aws auth config sso [--profile]
 ```
 
 ## Analyze actual access to a secret
