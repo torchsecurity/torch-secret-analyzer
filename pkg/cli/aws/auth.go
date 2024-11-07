@@ -35,7 +35,7 @@ var (
 var authCommand = &cobra.Command{
 	Use:   "auth",
 	Short: "AWS authentication",
-	Long:  "Print anc configure AWS authentication methods",
+	Long:  "Print and configure AWS authentication methods",
 }
 
 var configCommand = &cobra.Command{

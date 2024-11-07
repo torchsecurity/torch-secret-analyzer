@@ -28,6 +28,10 @@ var listActualCommand = &cobra.Command{
 	Short: "List AWS secret's actual consumers",
 	Long:  `Torch analyzes AWS Cloudtrail events and crosses information with AWS Secrets Manager to identify who are the "consumers" of a given secrets in a given timeframe`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if secretId == "" {
+			fmt.Println(cmd.UsageString())
+			return
+		}
 		fmt.Printf("Listing all actual consumers of the secret '%s' based on AWS CloudTrail Events, filtering for read events in the last %d days:\n", secretId, daysBack)
 		cloudtrailEvents, err := aws_cloudtrail.CollectCloudTrail(region, daysBack, profileToUse)
 		if err != nil {
